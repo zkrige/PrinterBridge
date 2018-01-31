@@ -20,11 +20,15 @@
     return dispatch_get_main_queue();
 }
 
+- (NSArray<NSString *> *)supportedEvents {
+    return nil;
+}
+
 RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(testPrinterModule) {
     UIView *view = UIApplication.sharedApplication.keyWindow;
-    [view makeToast:@"Working..."];
+    [view makeToast:@"Printer module is Working..."];
 }
 
 RCT_EXPORT_METHOD(initPrinter) {
@@ -43,7 +47,7 @@ RCT_EXPORT_METHOD(initPrinter) {
 
 RCT_EXPORT_METHOD(searchForPrinters) {
     //start the scan and emit event once all devices are found
-    [_printController scanBTv4:nil scanTimeout:10];
+    [_printController scanBTv4:nil scanTimeout:0];
 
 }
 

@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		3B7D56D22021D78100BF50E8 /* ReceiptUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D56CC2021D78100BF50E8 /* ReceiptUtility.m */; };
 		3B7D56D62021DBF800BF50E8 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D56D52021DBF800BF50E8 /* UIView+Toast.m */; };
-		3B7D57762021E73B00BF50E8 /* libSimplyPrint-1.5.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7D56D02021D78100BF50E8 /* libSimplyPrint-1.5.1.a */; };
+		3B7D58722021E99700BF50E8 /* SimplyPrintController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B7D56CF2021D78100BF50E8 /* SimplyPrintController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B7D58772021EAD500BF50E8 /* libSimplyPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7D58762021EAD500BF50E8 /* libSimplyPrint.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNPrinterBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNPrinterBridge.m */; };
 /* End PBXBuildFile section */
 
@@ -30,9 +31,9 @@
 		3B7D56CC2021D78100BF50E8 /* ReceiptUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptUtility.m; sourceTree = "<group>"; };
 		3B7D56CD2021D78100BF50E8 /* ReceiptUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptUtility.h; sourceTree = "<group>"; };
 		3B7D56CF2021D78100BF50E8 /* SimplyPrintController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplyPrintController.h; sourceTree = "<group>"; };
-		3B7D56D02021D78100BF50E8 /* libSimplyPrint-1.5.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libSimplyPrint-1.5.1.a"; sourceTree = "<group>"; };
 		3B7D56D42021DBF800BF50E8 /* UIView+Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		3B7D56D52021DBF800BF50E8 /* UIView+Toast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		3B7D58762021EAD500BF50E8 /* libSimplyPrint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSimplyPrint.a; path = ../../../../../../../PrinterBridge/ios/Library/libSimplyPrint.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNPrinterBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPrinterBridge.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNPrinterBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPrinterBridge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -42,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B7D57762021E73B00BF50E8 /* libSimplyPrint-1.5.1.a in Frameworks */,
+				3B7D58772021EAD500BF50E8 /* libSimplyPrint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				3B7D56CF2021D78100BF50E8 /* SimplyPrintController.h */,
-				3B7D56D02021D78100BF50E8 /* libSimplyPrint-1.5.1.a */,
+				3B7D58762021EAD500BF50E8 /* libSimplyPrint.a */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -90,6 +91,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		3B7D58712021E99300BF50E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B7D58722021E99700BF50E8 /* SimplyPrintController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		58B511DA1A9E6C8500147676 /* RNPrinterBridge */ = {
 			isa = PBXNativeTarget;
@@ -98,6 +110,7 @@
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
+				3B7D58712021E99300BF50E8 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -114,7 +127,7 @@
 		58B511D31A9E6C8500147676 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
@@ -161,14 +174,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -205,14 +224,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

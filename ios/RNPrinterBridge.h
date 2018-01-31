@@ -1,7 +1,7 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 
-@interface RNPrinterBridge : RCTEventEmitter <RCTBridgeModule>
+@interface RNPrinterBridge : RCTEventEmitter 
 
 @end
   
