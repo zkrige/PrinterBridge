@@ -125,7 +125,7 @@ RCT_EXPORT_METHOD(printReceipt:(NSString *)receiptContent isMerchantReceipt:(BOO
         case SimplyPrintPrinterResult_WrongPrinterCommand: resultName = @"Wrong printer command"; break;
         case SimplyPrintPrinterResult_Overheat: resultName = @"Overheat"; break;
     }
-    [self sendEventWithName:@"onReturnPrinterResult" body:@{@"message": errorName}];
+    [self sendEventWithName:@"onReturnPrinterResult" body:@{@"message": resultName}];
 }
 @end
 
