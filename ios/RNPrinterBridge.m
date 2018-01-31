@@ -9,6 +9,7 @@
     SimplyPrintController *_printController;
     RCTResponseSenderBlock _callback;
     NSArray <CBPeripheral *> *_pairedDevices;
+    NSData * _receiptData;
 }
 @end
 
@@ -55,7 +56,7 @@ RCT_EXPORT_METHOD(searchForPrinters) {
     _pairedDevices = [NSMutableArray new];
     for (int i=0 ; i<[foundDevices count]; i++) {
         CBPeripheral *pairedDevice = (CBPeripheral *)[foundDevices objectAtIndex:i];
-        [pairedDevices addObject:pairedDevice];
+        [_pairedDevices addObject:pairedDevice];
         NSString *foundDeviceName = [pairedDevice name];
         [devices addObject:foundDeviceName];
     }
@@ -65,24 +66,24 @@ RCT_EXPORT_METHOD(searchForPrinters) {
 RCT_EXPORT_METHOD(connectToPrinterByName:(NSString *)name) {
     for (CBPeripheral *device in _pairedDevices){
         if (device == nil) {
-            continue
+            continue;
         }
         if ([[device name] isEqualToString:name]){
-            NSLog(@"Connected to: " + name);
+            NSLog(@"Connected to: %@",name);
             [_printController connectBTv4:device];
         }
     }
 }
 
 RCT_EXPORT_METHOD(printReceipt:(NSString *)receiptContent isMerchantReceipt:(BOOL)isMerchantReceipt tradingName:(NSString *)tradingName) {
+    _receiptData = [ReceiptUtility genReceipt:receiptContent isMerchantReceipt:isMerchantReceipt tradingName:tradingName];
     [_printController startPrint];
 }
 
 #pragma mark - SimplyPrintControllerDelegate
 
 - (void)onSimplyPrintRequestPrintData {
-    NSData *receiptData = [ReceiptUtility genReceipt:receiptContent isMerchantReceipt:isMerchantReceipt tradingName:tradingName];
-    [_printController sendPrinterData:receiptData];
+    [_printController sendPrinterData:_receiptData];
 }
 
 - (void)onSimplyPrintBatteryLow:(SimplyPrintBatteryStatus)batteryStatus {
@@ -90,7 +91,7 @@ RCT_EXPORT_METHOD(printReceipt:(NSString *)receiptContent isMerchantReceipt:(BOO
 }
 - (void)onSimplyPrintError:(SimplyPrintErrorType)ErrorType errorMessage:(NSString *)errorMessage {
     NSString *errorName;
-    switch ErrorType {
+    switch (ErrorType) {
     case SimplyPrintErrorType_InvalidInput: errorName = @"Invalid Input" break;
     case SimplyPrintErrorType_InvalidInput_InputValueOutOfRange: errorName = @"Input value out of range" break;
     case SimplyPrintErrorType_InvalidInput_InvalidDataFormat: errorName = @"Invalid data format" break;
@@ -118,7 +119,7 @@ RCT_EXPORT_METHOD(printReceipt:(NSString *)receiptContent isMerchantReceipt:(BOO
 
 - (void)onSimplyPrintReturnPrintResult:(SimplyPrintPrinterResult)result {
     NSString *resultName;
-    switch result {
+    switch (result) {
     case SimplyPrintPrinterResult_Success: resultName = @"Success"; break;
     case SimplyPrintPrinterResult_NoPaperOrCoverOpened: resultName = @"No paper or cover opened"; break;
     case SimplyPrintPrinterResult_WrongPrinterCommand: resultName = @"Wrong printer command"; break;
@@ -127,4 +128,4 @@ RCT_EXPORT_METHOD(printReceipt:(NSString *)receiptContent isMerchantReceipt:(BOO
     [self sendEventWithName:@"onReturnPrinterResult" body:@{@"message": errorName}];
 }
 @end
-  
+

@@ -29,6 +29,7 @@ const char CHAR_SPACING_0[] = {0x1B,0x20,0x00};
 const char CHAR_SPACING_1[] = {0x1B,0x20,0x01};
 
 + (NSData *)genReceipt:(NSString *)receipt isMerchantReceipt:(BOOL)isMerchantReceipt tradingName:(NSString *)tradingName {
+
     NSString *lineSep = @"\n";
     NSString *yourString = receipt;
     yourString = [yourString stringByReplacingOccurrencesOfString:@"<br>" withString:@"brnl"];
