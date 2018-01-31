@@ -10,6 +10,7 @@
     RCTResponseSenderBlock _callback;
     NSArray <CBPeripheral *> *_pairedDevices;
 }
+@end
 
 @implementation RNPrinterBridge
 
