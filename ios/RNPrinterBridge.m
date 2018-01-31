@@ -1,7 +1,6 @@
 #import "RNPrinterBridge.h"
 #import <React/RCTConvert.h>
 #import <React/RCTUtils.h>
-#import "ProgressHUD.h"
 #import "SimplyPrintController.h"
 #import "ReceiptUtility.h"
 #import "UIView+Toast.h"
