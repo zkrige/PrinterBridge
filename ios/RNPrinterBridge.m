@@ -4,6 +4,7 @@
 #import "ProgressHUD.h"
 #import "SimplyPrintController.h"
 #import "ReceiptUtility.h"
+#import "UIView+Toast.h"
 
 @interface RNPrinterBridge()<SimplyPrintControllerDelegate> {
     SimplyPrintController *_printController;
@@ -21,7 +22,7 @@
 RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(testPrinterModule) {
-    [ProgressHUD showMessage:@"Working..."];
+    [self.view makeToast:@"Working..."];
 }
 
 RCT_EXPORT_METHOD(initPrinter) {
