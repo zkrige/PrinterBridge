@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B7D56D22021D78100BF50E8 /* ReceiptUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D56CC2021D78100BF50E8 /* ReceiptUtility.m */; };
-		3B7D56D32021D78100BF50E8 /* libSimplyPrint-1.5.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7D56D02021D78100BF50E8 /* libSimplyPrint-1.5.1.a */; };
 		3B7D56D62021DBF800BF50E8 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D56D52021DBF800BF50E8 /* UIView+Toast.m */; };
+		3B7D57762021E73B00BF50E8 /* libSimplyPrint-1.5.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7D56D02021D78100BF50E8 /* libSimplyPrint-1.5.1.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNPrinterBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNPrinterBridge.m */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B7D56D32021D78100BF50E8 /* libSimplyPrint-1.5.1.a in Frameworks */,
+				3B7D57762021E73B00BF50E8 /* libSimplyPrint-1.5.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +66,13 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		3B7D57752021E73B00BF50E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +84,7 @@
 				B3E7B5881CC2AC0600A0062D /* RNPrinterBridge.h */,
 				B3E7B5891CC2AC0600A0062D /* RNPrinterBridge.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				3B7D57752021E73B00BF50E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
