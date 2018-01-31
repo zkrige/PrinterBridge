@@ -1,0 +1,22 @@
+{
+  "name": "PrinterBridge",
+  "description": "A React Native module that allows you to use a BT printer",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zkrige/PrinterBridge.git"
+  },
+  "nativePackage": true,
+  "author": "Zayin Krige (zkrige)",
+  "contributors": [
+  ],
+  "keywords": [
+    "react-native",
+    "PrinterBridge",
+    "react",
+    "native",
+    "bluetooth",
+    "printer"
+  ]
+}
