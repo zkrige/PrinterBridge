@@ -22,7 +22,8 @@
 RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(testPrinterModule) {
-    [self.view makeToast:@"Working..."];
+    UIView *view = UIApplication.sharedApplication.keyWindow;
+    [view makeToast:@"Working..."];
 }
 
 RCT_EXPORT_METHOD(initPrinter) {
@@ -50,15 +51,15 @@ RCT_EXPORT_METHOD(searchForPrinters) {
     if (foundDevices == nil){
         return;
     }
-    NSMutableArray *foundDevices = [NSMutableArray new];
+    NSMutableArray *devices = [NSMutableArray new];
     _pairedDevices = [NSMutableArray new];
     for (int i=0 ; i<[foundDevices count]; i++) {
         CBPeripheral *pairedDevice = (CBPeripheral *)[foundDevices objectAtIndex:i];
         [pairedDevices addObject:pairedDevice];
-        foundDeviceName = [pairedDevice name];
-        [foundDevices addObject:foundDeviceName];
+        NSString *foundDeviceName = [pairedDevice name];
+        [devices addObject:foundDeviceName];
     }
-    [self sendEventWithName:@"foundPrinters" body:@{@"devices": foundDevices}];
+    [self sendEventWithName:@"foundPrinters" body:@{@"devices": devices}];
 }
 
 RCT_EXPORT_METHOD(connectToPrinterByName:(NSString *)name) {
