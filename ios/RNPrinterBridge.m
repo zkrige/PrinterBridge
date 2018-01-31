@@ -1,25 +1,22 @@
-//
-//  PrinterBridge.m
-//  PrinterBridge
-//
-//  Created by Zayin Krige on 2018/01/31.
-//  Copyright © 2018 Apex Technology. All rights reserved.
-//
-
-#import "PrinterBridge.h"
+#import "RNPrinterBridge.h"
 #import <React/RCTConvert.h>
 #import <React/RCTUtils.h>
 #import "ProgressHUD.h"
 #import "SimplyPrintController.h"
 #import "ReceiptUtility.h"
 
-@interface PrinterBridge()<SimplyPrintControllerDelegate> {
+@interface RNPrinterBridge()<SimplyPrintControllerDelegate> {
     SimplyPrintController *_printController;
     RCTResponseSenderBlock _callback;
     NSArray <CBPeripheral *> *_pairedDevices;
 }
 
-@implementation PrinterBridge
+@implementation RNPrinterBridge
+
+- (dispatch_queue_t)methodQueue
+{
+    return dispatch_get_main_queue();
+}
 
 RCT_EXPORT_MODULE();
 
@@ -128,3 +125,4 @@ RCT_EXPORT_METHOD(printReceipt:(NSString *)receiptContent isMerchantReceipt:(BOO
     [self sendEventWithName:@"onReturnPrinterResult" body:@{@"message": errorName}];
 }
 @end
+  

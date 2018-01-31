@@ -1,2 +1,6 @@
+
 import { NativeModules } from 'react-native';
-module.exports = NativeModules.PrinterBridge;
+
+const { RNPrinterBridge } = NativeModules;
+
+export default RNPrinterBridge;
