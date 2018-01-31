@@ -1,3 +1,11 @@
+//
+//  PrinterBridge.m
+//  PrinterBridge
+//
+//  Created by Zayin Krige on 2018/01/31.
+//  Copyright © 2018 Apex Technology. All rights reserved.
+//
+
 #import "PrinterBridge.h"
 #import <React/RCTConvert.h>
 #import <React/RCTUtils.h>
