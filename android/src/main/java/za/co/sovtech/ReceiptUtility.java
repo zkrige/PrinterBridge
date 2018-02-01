@@ -8,8 +8,6 @@ import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 
-import za.co.sovtech.sureswipe.R;
-
 public class ReceiptUtility {
 
     private static byte[] INIT = {0x1B,0x40};

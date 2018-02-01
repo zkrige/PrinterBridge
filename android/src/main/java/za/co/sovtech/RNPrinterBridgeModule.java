@@ -6,7 +6,6 @@ import android.bluetooth.BluetoothDevice;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
-import za.co.sovtech.ReceiptUtility;
 import com.bbpos.simplyprint.SimplyPrintController;
 
 import java.util.ArrayList;
@@ -17,10 +16,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeArray;
