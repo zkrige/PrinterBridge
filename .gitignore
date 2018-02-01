@@ -1,2 +1,4 @@
 xcuserdata/
 .idea
+android/.gradle
+android/build
