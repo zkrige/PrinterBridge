@@ -5,23 +5,53 @@
 #import "ReceiptUtility.h"
 #import "UIView+Toast.h"
 
-@interface RNPrinterBridge()<SimplyPrintControllerDelegate> {
-    SimplyPrintController *_printController;
+@interface RNPrinterBridge()<SimplyPrintControllerDelegate>
+@end
+
+@implementation RNPrinterBridge{
     RCTResponseSenderBlock _callback;
     NSMutableArray <CBPeripheral *> *_pairedDevices;
     NSData * _receiptData;
+    bool hasListeners;
 }
-@end
 
-@implementation RNPrinterBridge
+// Will be called when this module's first listener is added.
+-(void)startObserving {
+    hasListeners = YES;
+    // Set up any upstream listeners or background tasks as necessary
+}
 
-- (dispatch_queue_t)methodQueue
-{
+// Will be called when this module's last listener is removed, or on dealloc.
+-(void)stopObserving {
+    hasListeners = NO;
+    // Remove upstream listeners, stop unnecessary background tasks
+}
+
+- (dispatch_queue_t)methodQueue {
     return dispatch_get_main_queue();
 }
 
+- (instancetype)init {
+    self = [super init];
+    NSString *build = [NSString stringWithFormat:@"API Version %@ (Build %@)",
+                       [[SimplyPrintController sharedController] getApiVersion],
+                       [[SimplyPrintController sharedController] getApiBuildNumber]];
+    NSLog(@"%@", build);
+    return self;
+}
+
 - (NSArray<NSString *> *)supportedEvents {
-    return nil;
+    return @[@"foundPrinters",
+             @"onPrinterError",
+             @"onBTConnectionStatusChanged",
+             @"onReturnPrinterResult"];
+}
+
+- (void)sendEventWithName:(NSString *)name body:(id)body {
+    //optimize for zero listeners
+    if (hasListeners) {
+        [super sendEventWithName:name body:body];
+    }
 }
 
 RCT_EXPORT_MODULE();
@@ -32,22 +62,18 @@ RCT_EXPORT_METHOD(testPrinterModule) {
 }
 
 RCT_EXPORT_METHOD(initPrinter) {
-    if (_printController == nil) {
-        NSLog(@"printController is nil");
-        _printController = [SimplyPrintController sharedController];
-    }
-
-    if ([_printController isDevicePresent]) {
+    if ([[SimplyPrintController sharedController] isDevicePresent]) {
         NSLog(@"device is present");
     } else {
         NSLog(@"No device present");
+        [[SimplyPrintController sharedController] setDelegate:self];
         [self searchForPrinters];
     }
 }
 
 RCT_EXPORT_METHOD(searchForPrinters) {
     //start the scan and emit event once all devices are found
-    [_printController scanBTv4:nil scanTimeout:0];
+    [[SimplyPrintController sharedController] scanBTv4:nil scanTimeout:0];
 
 }
 
@@ -74,20 +100,20 @@ RCT_EXPORT_METHOD(connectToPrinterByName:(NSString *)name) {
         }
         if ([[device name] isEqualToString:name]){
             NSLog(@"Connected to: %@",name);
-            [_printController connectBTv4:device];
+            [[SimplyPrintController sharedController] connectBTv4:device];
         }
     }
 }
 
 RCT_EXPORT_METHOD(printReceipt:(NSString *)receiptContent isMerchantReceipt:(BOOL)isMerchantReceipt tradingName:(NSString *)tradingName) {
     _receiptData = [ReceiptUtility genReceipt:receiptContent isMerchantReceipt:isMerchantReceipt tradingName:tradingName];
-    [_printController startPrint];
+    [[SimplyPrintController sharedController] startPrint];
 }
 
 #pragma mark - SimplyPrintControllerDelegate
 
 - (void)onSimplyPrintRequestPrintData {
-    [_printController sendPrinterData:_receiptData];
+    [[SimplyPrintController sharedController] sendPrinterData:_receiptData];
 }
 
 - (void)onSimplyPrintBatteryLow:(SimplyPrintBatteryStatus)batteryStatus {
