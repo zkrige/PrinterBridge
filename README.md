@@ -34,15 +34,6 @@
       compile project(':react-native-printer-bridge')
   	```
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNPrinterBridge.sln` in `node_modules/react-native-printer-bridge/windows/RNPrinterBridge.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Printer.Bridge.RNPrinterBridge;` to the usings at the top of the file
-  - Add `new RNPrinterBridgePackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
-
 ## Usage
 ```javascript
 import RNPrinterBridge from 'react-native-printer-bridge';
