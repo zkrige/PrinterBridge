@@ -15,18 +15,6 @@
     bool hasListeners;
 }
 
-// Will be called when this module's first listener is added.
--(void)startObserving {
-    hasListeners = YES;
-    // Set up any upstream listeners or background tasks as necessary
-}
-
-// Will be called when this module's last listener is removed, or on dealloc.
--(void)stopObserving {
-    hasListeners = NO;
-    // Remove upstream listeners, stop unnecessary background tasks
-}
-
 - (dispatch_queue_t)methodQueue {
     return dispatch_get_main_queue();
 }
@@ -47,13 +35,6 @@
              @"onReturnPrinterResult"];
 }
 
-- (void)sendEventWithName:(NSString *)name body:(id)body {
-    //optimize for zero listeners
-    if (hasListeners) {
-        [super sendEventWithName:name body:body];
-    }
-}
-
 RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(testPrinterModule) {
@@ -72,6 +53,8 @@ RCT_EXPORT_METHOD(initPrinter) {
 }
 
 RCT_EXPORT_METHOD(searchForPrinters) {
+    //stop any scan that may be running
+    [[SimplyPrintController sharedController] stopScanBTv4];
     //start the scan and emit event once all devices are found
     [[SimplyPrintController sharedController] scanBTv4:nil scanTimeout:0];
 
