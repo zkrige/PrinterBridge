@@ -8,12 +8,14 @@
 @interface RNPrinterBridge()<SimplyPrintControllerDelegate>
 @end
 
+
 @implementation RNPrinterBridge{
     RCTResponseSenderBlock _callback;
     NSMutableArray <CBPeripheral *> *_pairedDevices;
     NSData * _receiptData;
     bool hasListeners;
 }
+RCT_EXPORT_MODULE();
 
 - (dispatch_queue_t)methodQueue {
     return dispatch_get_main_queue();
@@ -34,8 +36,6 @@
              @"onBTConnectionStatusChanged",
              @"onReturnPrinterResult"];
 }
-
-RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(testPrinterModule) {
     UIView *view = UIApplication.sharedApplication.keyWindow;
@@ -73,8 +73,10 @@ RCT_EXPORT_METHOD(searchForPrinters) {
         NSString *foundDeviceName = [pairedDevice name];
         [devices addObject:foundDeviceName];
     }
+
     [self sendEventWithName:@"foundPrinters" body:@{@"devices": devices}];
 }
+
 
 RCT_EXPORT_METHOD(connectToPrinterByName:(NSString *)name) {
     for (CBPeripheral *device in _pairedDevices){
