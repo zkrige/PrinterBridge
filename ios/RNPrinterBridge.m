@@ -3,7 +3,6 @@
 #import <React/RCTUtils.h>
 #import "SimplyPrintController.h"
 #import "ReceiptUtility.h"
-#import "UIView+Toast.h"
 
 @interface RNPrinterBridge()<SimplyPrintControllerDelegate>
 @end
@@ -35,11 +34,6 @@ RCT_EXPORT_MODULE();
              @"onPrinterError",
              @"onBTConnectionStatusChanged",
              @"onReturnPrinterResult"];
-}
-
-RCT_EXPORT_METHOD(testPrinterModule) {
-    UIView *view = UIApplication.sharedApplication.keyWindow;
-    [view makeToast:@"Printer module is Working..."];
 }
 
 RCT_EXPORT_METHOD(initPrinter) {

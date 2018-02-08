@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B7D56D22021D78100BF50E8 /* ReceiptUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D56CC2021D78100BF50E8 /* ReceiptUtility.m */; };
-		3B7D56D62021DBF800BF50E8 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D56D52021DBF800BF50E8 /* UIView+Toast.m */; };
 		3B7D58722021E99700BF50E8 /* SimplyPrintController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B7D56CF2021D78100BF50E8 /* SimplyPrintController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B7D58772021EAD500BF50E8 /* libSimplyPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7D58762021EAD500BF50E8 /* libSimplyPrint.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNPrinterBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNPrinterBridge.m */; };
@@ -31,8 +30,6 @@
 		3B7D56CC2021D78100BF50E8 /* ReceiptUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptUtility.m; sourceTree = "<group>"; };
 		3B7D56CD2021D78100BF50E8 /* ReceiptUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptUtility.h; sourceTree = "<group>"; };
 		3B7D56CF2021D78100BF50E8 /* SimplyPrintController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplyPrintController.h; sourceTree = "<group>"; };
-		3B7D56D42021DBF800BF50E8 /* UIView+Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
-		3B7D56D52021DBF800BF50E8 /* UIView+Toast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		3B7D58762021EAD500BF50E8 /* libSimplyPrint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSimplyPrint.a; path = ../../../../../../../PrinterBridge/ios/Library/libSimplyPrint.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNPrinterBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPrinterBridge.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNPrinterBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPrinterBridge.m; sourceTree = "<group>"; };
@@ -77,8 +74,6 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				3B7D56D42021DBF800BF50E8 /* UIView+Toast.h */,
-				3B7D56D52021DBF800BF50E8 /* UIView+Toast.m */,
 				3B7D56CE2021D78100BF50E8 /* Library */,
 				3B7D56CD2021D78100BF50E8 /* ReceiptUtility.h */,
 				3B7D56CC2021D78100BF50E8 /* ReceiptUtility.m */,
@@ -157,7 +152,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B7D56D62021DBF800BF50E8 /* UIView+Toast.m in Sources */,
 				3B7D56D22021D78100BF50E8 /* ReceiptUtility.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNPrinterBridge.m in Sources */,
 			);
