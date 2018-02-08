@@ -64,6 +64,7 @@ const char CHAR_SPACING_1[] = {0x1B,0x20,0x01};
     [output appendBytes:NEW_LINE length:sizeof(NEW_LINE)];
     [output appendBytes:CHAR_SPACING_0 length:sizeof(CHAR_SPACING_0)];
     [output appendBytes:FONT_SIZE_1 length:sizeof(FONT_SIZE_1)];
+    [output appendBytes:FONT_5X12 length:sizeof(FONT_5X12)];
     if (isMerchantReceipt) {
         [output appendData:[@"Merchant Receipt" dataUsingEncoding:NSUTF8StringEncoding]];
     } else {
