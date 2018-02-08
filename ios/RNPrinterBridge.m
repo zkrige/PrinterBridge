@@ -3,10 +3,10 @@
 #import <React/RCTUtils.h>
 #import "SimplyPrintController.h"
 #import "ReceiptUtility.h"
-#import "UIView+Toast.h"
 
 @interface RNPrinterBridge()<SimplyPrintControllerDelegate>
 @end
+
 
 @implementation RNPrinterBridge{
     RCTResponseSenderBlock _callback;
@@ -14,6 +14,7 @@
     NSData * _receiptData;
     bool hasListeners;
 }
+RCT_EXPORT_MODULE();
 
 - (dispatch_queue_t)methodQueue {
     return dispatch_get_main_queue();
@@ -33,13 +34,6 @@
              @"onPrinterError",
              @"onBTConnectionStatusChanged",
              @"onReturnPrinterResult"];
-}
-
-RCT_EXPORT_MODULE();
-
-RCT_EXPORT_METHOD(testPrinterModule) {
-    UIView *view = UIApplication.sharedApplication.keyWindow;
-    [view makeToast:@"Printer module is Working..."];
 }
 
 RCT_EXPORT_METHOD(initPrinter) {
@@ -73,8 +67,10 @@ RCT_EXPORT_METHOD(searchForPrinters) {
         NSString *foundDeviceName = [pairedDevice name];
         [devices addObject:foundDeviceName];
     }
+
     [self sendEventWithName:@"foundPrinters" body:@{@"devices": devices}];
 }
+
 
 RCT_EXPORT_METHOD(connectToPrinterByName:(NSString *)name) {
     for (CBPeripheral *device in _pairedDevices){
